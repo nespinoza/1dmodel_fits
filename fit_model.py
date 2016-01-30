@@ -25,18 +25,26 @@ def fit(x, y, model, params):
         return params,y
 
 # Read data:
-x,y = np.loadtxt('datasets/example_line.dat',unpack=True)
+x,y = np.loadtxt('datasets/example_sigmoid.dat',unpack=True)
 
 # Define parameters:
 params = {}
+params['c'] = {}
+params['c']['guess'] = 200.0
 params['a'] = {}
-params['a']['guess'] = 1.0
+params['a']['guess'] = 50.0
+params['x0'] = {}
+params['x0']['guess'] = 4.0
 params['b'] = {}
-params['b']['guess'] = 3.0
+params['b']['guess'] = 10.0
 
 # Fit:
-out_params, y_pred = fit(x, y, models.line, params)
+out_params, y_pred = fit(x, y, models.sigmoid, params)
 
+# Print results:
+print '\t #### Results ####'
+for p in out_params.keys():
+        print '\t > Parameter '+p+' final value: ',out_params[p].value
 # Plot fit:
 import matplotlib.pyplot as plt
 plt.style.use('ggplot')
