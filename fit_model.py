@@ -25,7 +25,7 @@ def fit(x, y, model, params):
         return params,y
 
 # Read data:
-x,y = np.loadtxt('datasets/example_sigmoid.dat',unpack=True)
+x,y = np.loadtxt('datasets/example_double_sigmoid.dat',unpack=True)
 
 # Define parameters:
 params = {}
@@ -35,11 +35,13 @@ params['a'] = {}
 params['a']['guess'] = 50.0
 params['x0'] = {}
 params['x0']['guess'] = 4.0
+params['x1'] = {}
+params['x1']['guess'] = 9.0
 params['b'] = {}
 params['b']['guess'] = 10.0
 
 # Fit:
-out_params, y_pred = fit(x, y, models.sigmoid, params)
+out_params, y_pred = fit(x, y, models.double_sigmoid, params)
 
 # Print results:
 print '\t #### Results ####'

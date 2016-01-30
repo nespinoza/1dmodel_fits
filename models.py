@@ -31,3 +31,12 @@ def sigmoid(x,params):
 
     """
     return params['a'].value + (1./(1. + np.exp(-(x-params['x0'].value)*params['b'].value)))*params['c'].value
+
+def double_sigmoid(x,params):
+    """
+    This function implements two sigmoids; the function starts at a base level,
+    gets to a maximum level at x0, and then decreases to the base level again at 
+    x1. Values are the same as for the sigmoid.
+    """
+    return params['a'].value + (1./(1. + np.exp(-(x-params['x0'].value)*params['b'].value)))*params['c'].value\
+                             - (1./(1. + np.exp(-(x-params['x1'].value)*params['b'].value)))*params['c'].value
